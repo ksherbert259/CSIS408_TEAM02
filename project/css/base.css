@@ -90,7 +90,7 @@ nav a:hover {
 
 /* Base Page CSS */
 .PAGE {
-  margin: 20px;
+  padding: 40px;
 }
 
 /* Footer CSS */
@@ -99,4 +99,55 @@ nav a:hover {
   color: #333333;
   background-color: #FFD848EE;
   text-align: center;
+}
+
+/* Page Layouts */
+.PAGE > div,
+.PAGE.split_1 > div {
+  width: 100%;
+}
+
+.PAGE.split_2 > div {
+  width: 50%;
+}
+
+.PAGE.split_3 > div {
+  width: 32%;
+}
+
+.PAGE[class*="split_"] {
+  gap: 20px;
+  display: flex;
+  justify-content: center;
+  border: 1px solid #00000077;
+}
+
+.PAGE[class*="split_"] > div {
+  border: 1px solid #00000077;
+  height: 100%;
+}
+
+.PAGE[class*="split_"] > div > h1{
+  text-align: center;
+}
+
+.wrapper {
+  margin: 20px;
+}
+
+.balance {
+  width: 100%;
+  margin-bottom: 20px;
+  text-align: center;
+  border: 1px solid #00000077;
+  background-color: #00AAFF77;
+}
+
+.balance.expense {
+  background-color: #FF000077;
+}
+
+.balance.total {
+  background-color: #00BB0077;
+  margin-bottom: 0px;
 }
