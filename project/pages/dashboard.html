@@ -1,0 +1,150 @@
+<script type="text/javascript">
+
+  cat0 = 0;
+  cat1 = 0;
+  cat2 = 0;
+  cat3 = 0;
+  cat4 = 0;
+  cat5 = 0;
+  cat6 = 0;
+  cat7 = 0;
+  cat8 = 0;
+  cat9 = 0;
+
+  // Update the pie chart showing monthly spending
+  function UpdateChart()
+  {
+    for(var i = 0; i < USER_DATA.length; i++){ // HMMMMM - Kody
+      // Haha I got it.
+      // Switch("PARSEINT(...)")
+      // then we are checking if it matches the "STRING"
+
+
+      alert(parseInt(USER_DATA[i][1])); // this alerts the correct category name (8 and 6 for my test input)
+      switch (USER_DATA[i][1]) { // but then this doesn't read it as 8 or 6, it jumps to the default - alert of error
+        case "0":
+          cat0 = parseInt(cat0) + parseInt(USER_DATA[i][3]);
+          break;
+        case "1":
+          cat1 = parseInt(cat1) + parseInt(USER_DATA[i][3]);
+          break;
+        case "2":
+          cat2 = parseInt(cat2) + parseInt(USER_DATA[i][3]);
+          break;
+        case "3":
+          cat3 = parseInt(cat3) + parseInt(USER_DATA[i][3]);
+          break;
+        case "4":
+          cat4 = parseInt(cat4) + parseInt(USER_DATA[i][3]);
+          break;
+        case "5":
+          cat5 = parseInt(cat5) + parseInt(USER_DATA[i][3]);
+          break;
+        case "6":
+          cat6 = parseInt(cat6) + parseInt(USER_DATA[i][3]);
+          break;
+        case "7":
+          cat7 = parseInt(cat7) + parseInt(USER_DATA[i][3]);
+          break;
+        case "8":
+          cat8 = parseInt(cat8) + parseInt(USER_DATA[i][3]);
+          break;
+        case "9":
+          cat9 = parseInt(cat9) + parseInt(USER_DATA[i][3]);
+          break;
+        default:
+          console.log(i, USER_DATA[i][0], USER_DATA[i][1], USER_DATA[i][2], USER_DATA[i][3]);
+          break;
+      }
+    }
+  }
+
+  UpdateChart();
+
+  // Load the Visualization API and the corechart package.
+  google.charts.load('current', {'packages':['corechart']});
+
+  // Set a callback to run when the Google Visualization API is loaded.
+  google.charts.setOnLoadCallback(drawChart);
+
+  // Callback that creates and populates a data table,
+  // instantiates the pie chart, passes in the data and
+  // draws it.
+  function drawChart() {
+
+    // Create the data table.
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'Topping');
+    data.addColumn('number', 'Slices');
+    data.addRows([
+      ['Electronics', cat0],
+      ['Gas', cat1],
+      ['Groceries', cat2],
+      ['Insurance', cat3],
+      ['Maintenance', cat4],
+      ['Medical', cat5],
+      ['Rent', cat6],
+      ['Recreation', cat7],
+      ['Savings', cat8],
+      ['Other/Misc', cat9],
+    ]);
+
+    // Set chart options
+    var options = {'title':'Monthly Allotments:',
+                    'pieHole': 0.5,
+                    'height': 500,
+                    'hAxis': { textPosition: 'none' }
+                  };
+
+    // Instantiate and draw our chart, passing in some options.
+    var chart = new google.visualization.PieChart(document.getElementById('reports_box'));
+    chart.draw(data, options);
+  }
+
+  // Update the easy to view balance screen
+  function UpdateBalance()
+  {
+    var income = document.querySelector("div.balance.income");
+    var expense = document.querySelector("div.balance.expense");
+    var total = document.querySelector("div.balance.total");
+
+    for(var i = 0; i < USER_DATA.length; i++)
+    {
+      if(USER_DATA[i][0] === "INCOME")
+      {
+        income.dataset.balance = parseInt(income.dataset.balance) + parseInt(USER_DATA[i][3]);
+      }
+      else
+      {
+        expense.dataset.balance = parseInt(expense.dataset.balance) - parseInt(USER_DATA[i][3]);
+      }
+
+      income.textContent = "$ " + income.dataset.balance;
+      expense.textContent = "$ " + expense.dataset.balance;
+      total.dataset.balance = parseInt(income.dataset.balance) + parseInt(expense.dataset.balance);
+      total.textContent = "$ " + parseInt(total.dataset.balance);
+    }
+  }
+  UpdateBalance();
+
+</script>
+<div>
+  <h1>Balance</h1>
+  <div class="wrapper">
+    <div class="balance income" data-balance="0">$0.00</div>
+    <div class="balance expense" data-balance="0">$0.00</div>
+    <div class="balance total" data-balance="0">$0.00</div>
+  </div>
+</div>
+<div> <!-- Report Display -- Discuss best way to implement -->
+  <h1>Reports</h1>
+  <div class="wrapper" id="reports_box">
+
+  </div>
+</div>
+
+<script>
+  for (var i = 0; i < USER_DATA.length; ++i) {
+  // alert('value at index [' + i + '] is: [' + USER_DATA[i] + ']');
+}
+</script>

@@ -1,0 +1,109 @@
+<script>
+  function Validate(frm)
+  {
+    var okay = true;
+
+    do
+    {
+      // Validate either an expense or income was selected
+      okay = (frm.xTYPE.selectedIndex !== 0);
+      if(!okay)
+      {
+        alert("Your budget type is invalid!");
+        break;
+      }
+
+      // Ensure the item's category is valid
+      okay = (frm.xCATEGORY.children[frm.xCATEGORY.selectedIndex].value !== "");
+      if(!okay)
+      {
+        alert("Please select an item category");
+        break;
+      }
+
+      // Validate the name length
+      okay = (frm.xNAME.value.length < 50);
+      if(!okay)
+      {
+        alert("This is a name, not a description!");
+        break;
+      }
+
+      // Ensure the item's value is greater than 0
+      okay = (frm.xVALUE.value > 0);
+      if(!okay)
+      {
+        alert("Your item's value must be above 0.00");
+        break;
+      }
+
+    }
+    while(0);
+
+    if(okay)
+    {
+      var fields = [frm.xTYPE.value, frm.xCATEGORY.value, frm.xNAME.value, frm.xVALUE.value];
+      USER_DATA[USER_DATA.length] = fields;
+      WipeInput(frm);
+    }
+
+    return false;
+  }
+
+  function WipeInput(frm)
+  {
+    frm.xTYPE.selectedIndex = 0;
+    frm.xCATEGORY.selectedIndex = 0;
+    frm.xNAME.value = "";
+    frm.xVALUE.value = "";
+  }
+
+</script>
+        <div>
+          <div class="wrapper">
+            <form name="xFORM">
+              <table>
+                <tr>
+                  <td><p>Item Type:</p></td>
+                  <td>
+                    <select name="xTYPE" required>
+                      <option>Select Category</option>
+                      <option value="INCOME">+Income</option>
+                      <option value="EXPENSE">-Expense</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td><p>Item Category:</p></td>
+                  <td>
+                    <select name="xCATEGORY" required>
+                      <option>Select Category</option>
+                      <option value="0">Electronics</option>
+                      <option value="1">Gas</option>
+                      <option value="2">Groceries</option>
+                      <option value="3">Insurance</option>
+                      <option value="4">Maintenance</option>
+                      <option value="5">Medical</option>
+                      <option value="6">Rent</option>
+                      <option value="7">Recreation</option>
+                      <option value="8">Savings/Checking (Select for Income)</option>
+                      <option value="9">Other/Misc</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td><p>Item Name:</p></td>
+                  <td><input type="text" name="xNAME" placeholder="Input Name Here" required></td>
+                </tr>
+                <tr>
+                  <td><p>Item $value:</p></td>
+                  <td><input type="number" placeholder="Input Number Here" inputmode="decimal" min="0" step=".01" name="xVALUE" required></td>
+                </tr>
+                <tr><td colspan="2"><p></p>&nbsp;</td></tr>
+                <tr>
+                  <td colspan="2"><button type="button" onclick="Validate(document.xFORM)"><span>Add Data</span></button></td>
+                </tr>
+              </table>
+            </form>
+          </div>
+        </div>
