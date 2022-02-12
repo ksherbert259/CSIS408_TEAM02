@@ -90,8 +90,6 @@
 
 
     for(var i = 0; i < USER_DATA.length; i++){
-      // document.getElementById("electronics-row").innerHTML = "<td>"+  USER_DATA[i][0]+"</td>"
-      // document.getElementById("gas-row").innerHTML = "<td>"+  USER_DATA[2][1]+"</td>"
 
       var tr_elem = null;
       switch (USER_DATA[i][1]) { // but then this doesn't read it as 8 or 6, it jumps to the default - alert of error
@@ -100,7 +98,6 @@
           tr_elem = document.getElementById("electronics-row");
           tr_elem.children[1].dataset.balance = cat0;
           tr_elem.children[1].textContent = "$" + cat0;
-          /* document.getElementById("electronics-row").innerHTML = "<td>"+  cat0 + "</td>";*/
           manual_input.splice(0, 0, parseInt(cat0));
           break;
 
@@ -185,7 +182,6 @@
   }
 
 
-
   var array = ["electronics-row", "gas-row","groceries-row","insurance-row","maintenance-row","medical-row","rent-row","recreation-row","savings-row","other-row"]
 
   var y_values = [];
@@ -211,52 +207,49 @@
     tr_elem2 = document.getElementById(array[i]);
     tr_elem2.children[2].dataset.balance = "$" + y;
     tr_elem2.children[2].textContent = "$" + y;
-    y_values.push(y); //putting random variables into array
+    y_values.push(y); 
 
   }
 
   tr_elem3 = document.getElementById(array[0]);
-  tr_elem.children[3].dataset.balance = manual_input[0]-y_values[0];
-  tr_elem3.children[3].textContent = "$" + String(manual_input[0]-y_values[0]);
+  tr_elem3.children[3].dataset.balance = manual_input[0]-y_values[0];
+  tr_elem3.children[3].textContent = "$" + String(y_values[0]-cat0);
 
   tr_elem3 = document.getElementById(array[1]);
-  tr_elem.children[3].dataset.balance = (manual_input[1]-y_values[1]);
-  tr_elem3.children[3].textContent = "$" + String(manual_input[1]-y_values[1]);
+  tr_elem3.children[3].dataset.balance = (manual_input[1]-y_values[1]);
+  tr_elem3.children[3].textContent = "$" + String(y_values[1]-cat1);
 
   tr_elem3 = document.getElementById(array[2]);
-  tr_elem.children[3].dataset.balance = y_values[2];
-  tr_elem3.children[3].textContent = "$" + String(manual_input[2]-y_values[2]);
+  tr_elem3.children[3].dataset.balance = y_values[2];
+  tr_elem3.children[3].textContent = "$" + String(y_values[2]-cat2);
 
   tr_elem3 = document.getElementById(array[3]);
-  tr_elem.children[3].dataset.balance = y_values[3];
-  tr_elem3.children[3].textContent = "$" + String(manual_input[3]-y_values[3]);
+  tr_elem3.children[3].dataset.balance = y_values[3];
+  tr_elem3.children[3].textContent = "$" + String(y_values[3]-cat3);
 
   tr_elem3 = document.getElementById(array[4]);
-  tr_elem.children[3].dataset.balance = y_values[4];
-  tr_elem3.children[3].textContent = "$" + String(manual_input[4]-y_values[4]);
+  tr_elem3.children[3].dataset.balance = y_values[4];
+  tr_elem3.children[3].textContent = "$" + String(y_values[4]-cat4);
 
   tr_elem3 = document.getElementById(array[5]);
-  tr_elem.children[3].dataset.balance = y_values[5];
-  tr_elem3.children[3].textContent = "$" + String(manual_input[5]-y_values[5]);
+  tr_elem3.children[3].dataset.balance = y_values[5];
+  tr_elem3.children[3].textContent = "$" + String(y_values[5]-cat5);
 
   tr_elem3 = document.getElementById(array[6]);
-  tr_elem.children[3].dataset.balance = y_values[6];
-  tr_elem3.children[3].textContent = "$" + String(manual_input[6]-y_values[6]);
+  tr_elem3.children[3].dataset.balance = y_values[6];
+  tr_elem3.children[3].textContent = "$" + String(y_values[6]-cat6);
 
   tr_elem3 = document.getElementById(array[7]);
-  tr_elem.children[3].dataset.balance = y_values[7];
-  tr_elem3.children[3].textContent = "$" + String(manual_input[7]-y_values[7]);
+  tr_elem3.children[3].dataset.balance = y_values[7];
+  tr_elem3.children[3].textContent = "$" + String(y_values[7]-cat7);
 
   tr_elem3 = document.getElementById(array[8]);
-  tr_elem.children[3].dataset.balance = y_values[8];
-  tr_elem3.children[3].textContent = "$" + String(manual_input[8]-y_values[8]);
+  tr_elem3.children[3].dataset.balance = y_values[8];
+  tr_elem3.children[3].textContent = "$" + String(y_values[8]-cat8);
 
   tr_elem3 = document.getElementById(array[9]);
-  tr_elem.children[3].dataset.balance = y_values[9];
-  tr_elem3.children[3].textContent = "$" + String(manual_input[9]-y_values[9]);
-
-
-  
+  tr_elem3.children[3].dataset.balance = y_values[9];
+  tr_elem3.children[3].textContent = "$" + String(y_values[9]-cat9);
 
   </script>
 </body>
