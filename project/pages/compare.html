@@ -15,66 +15,65 @@
       <th>Last Month's Spending</th>
       <th>Difference </th>
     </tr>
-    <tr>
+    <tr id="electronics-row">
       <td>Electronics</td>
       <td></td>
       <td></td>
       <td></td>
     </tr>
-    <tr>
+    <tr id = "gas-row">
       <td>Gas</td>
       <td></td>
       <td></td>
       <td></td>
     </tr>
-    <tr>
+    <tr id = "groceries-row">
       <td>Groceries</td>
       <td></td>
       <td></td>
       <td></td>
     </tr>
-    </tr>
-    <tr>
+    <tr id = "insurance-row">
       <td>Insurance</td>
       <td></td>
       <td></td>
       <td></td>
     </tr>
-    </tr>
-    <tr>
+    <tr id = "maintenance-row">
       <td>Maintenance</td>
       <td></td>
       <td></td>
       <td></td>
     </tr>
+    <tr id = "medical-row">
+      <td>Medical</td>
+      <td></td>
+      <td></td>
+      <td></td>
     </tr>
-    <tr>
+    <tr id = "rent-row">
       <td>Rent</td>
       <td></td>
       <td></td>
       <td></td>
     </tr>
-    </tr>
-    <tr>
+    <tr id="recreation-row">
       <td>Recreation</td>
       <td></td>
       <td></td>
       <td></td>
     </tr>
-    </tr>
-    <tr>
+    <tr id="savings-row">
       <td>Savings/Checking</td>
       <td></td>
       <td></td>
       <td></td>
     </tr>
-    </tr>
-    <tr>
+    <tr id="other-row">
       <td>Other/Misc</td>
       <td></td>
       <td></td>
       <td></td>
-    </tr>
     </tr>
   </table>
 
@@ -82,15 +81,184 @@
     var table = document.getElementById("compare");
     var rows = table.querySelectorAll('tr');
     console.log(rows)
-    for(var i = 0; i < USER_DATA.length; i++){
-      USER_DATA[i][1] 
-      USER_DATA[i][2] 
-      USER_DATA[i][3] 
-    }
 
-  </script>
+    
+
+    /* const USER_DATA = JSON.parse(localStorage.getItem("user")) */
+
+    var manual_input = [] /*Holds values entered by user*/
+
+
+    for(var i = 0; i < USER_DATA.length; i++){
+      // document.getElementById("electronics-row").innerHTML = "<td>"+  USER_DATA[i][0]+"</td>"
+      // document.getElementById("gas-row").innerHTML = "<td>"+  USER_DATA[2][1]+"</td>"
+
+      var tr_elem = null;
+      switch (USER_DATA[i][1]) { // but then this doesn't read it as 8 or 6, it jumps to the default - alert of error
+        case "0":
+          cat0 = parseInt(cat0) + parseInt(USER_DATA[i][3]);
+          tr_elem = document.getElementById("electronics-row");
+          tr_elem.children[1].dataset.balance = cat0;
+          tr_elem.children[1].textContent = "$" + cat0;
+          /* document.getElementById("electronics-row").innerHTML = "<td>"+  cat0 + "</td>";*/
+          manual_input.splice(0, 0, parseInt(cat0));
+          break;
+
+        case "1":
+          cat1 = parseInt(cat1) + parseInt(USER_DATA[i][3]);
+          tr_elem = document.getElementById("gas-row");
+          tr_elem.children[1].dataset.balance = cat1;
+
+          tr_elem.children[1].textContent = "$" + cat1;
+          manual_input.splice(1, 0, parseInt(cat1));
+          break;
+
+        case "2":
+          cat2 = parseInt(cat2) + parseInt(USER_DATA[i][3]);
+          tr_elem = document.getElementById("groceries-row");
+          tr_elem.children[1].dataset.balance = cat2;
+          tr_elem.children[1].textContent = "$" + cat2;
+          manual_input.splice(2, 0, parseInt(cat2)); 
+          break;
+
+        case "3":
+          cat3 = parseInt(cat3) + parseInt(USER_DATA[i][3]);
+          tr_elem = document.getElementById("insurance-row");
+          tr_elem.children[1].dataset.balance = cat3;
+          tr_elem.children[1].textContent = "$" + cat3;
+          manual_input.splice(3, 0, parseInt(cat3));
+          break;
+
+        case "4":
+          cat4 = parseInt(cat4) + parseInt(USER_DATA[i][3]);
+          tr_elem = document.getElementById("maintenance-row");
+          tr_elem.children[1].dataset.balance = cat4;
+          tr_elem.children[1].textContent = "$" + cat4;
+          manual_input.splice(4, 0, parseInt(cat4));
+          break;
+
+        case "5":
+          cat5 = parseInt(cat5) + parseInt(USER_DATA[i][3]);
+          tr_elem = document.getElementById("medical-row");
+          tr_elem.children[1].dataset.balance = cat5;
+          tr_elem.children[1].textContent = "$" + cat5;
+          manual_input.splice(5, 0, parseInt(cat5));
+          break;
+
+        case "6":
+          cat6 = parseInt(cat6) + parseInt(USER_DATA[i][3]);
+          tr_elem = document.getElementById("rent-row");
+          tr_elem.children[1].dataset.balance = cat6;
+          tr_elem.children[1].textContent = "$" + cat6;
+          manual_input.splice(6, 0, parseInt(cat6));
+          break;
+
+        case "7":
+          cat7 = parseInt(cat7) + parseInt(USER_DATA[i][3]);
+          tr_elem = document.getElementById("recreation-row");
+          tr_elem.children[1].dataset.balance = cat7;
+          tr_elem.children[1].textContent = "$" + cat7;
+          manual_input.splice(7, 0, parseInt(cat7));
+
+          break;
+        case "8":
+          cat8 = parseInt(cat8) + parseInt(USER_DATA[i][3]);
+          tr_elem = document.getElementById("savings-row");
+          tr_elem.children[1].dataset.balance = cat8;
+          tr_elem.children[1].textContent = "$" + cat8;
+          manual_input.splice(8, 0, parseInt(cat8))
+          break;
+
+        case "9":
+          cat9 = parseInt(cat9) + parseInt(USER_DATA[i][3]);
+          tr_elem = document.getElementById("other-row");
+          tr_elem.children[1].dataset.balance = cat9;
+          tr_elem.children[1].textContent = "$" + cat9;
+          manual_input.splice(9, 0, parseInt(cat9))
+          break;
+  
+        default:
+          console.log(i, USER_DATA[i][0], USER_DATA[i][1], USER_DATA[i][2], USER_DATA[i][3]);
+          break;
+      
+    }
+  }
+
+
+
+  var array = ["electronics-row", "gas-row","groceries-row","insurance-row","maintenance-row","medical-row","rent-row","recreation-row","savings-row","other-row"]
+
+  var y_values = [];
+  var x_var = [];
+
+  /*populating colum 3*/
+  for(var i = 0; i < 10; i++){
+
+    //random number generator
+    function randomNumber(){
+      return Math.floor(Math.random() * (150 - 50) + 50);
+    }
+    
+    let x = randomNumber(); //holds random number
+    var y = String(x); //converts the random number into a string
+    
+    //iterating through table to pre-fill in 4th row with 0
+    tr_elem3 = document.getElementById(array[i]);
+    tr_elem3.children[3].dataset.balance = 0;
+    tr_elem3.children[3].textContent = "$" + 0;
+
+    //var tr_elem2 = null;
+    tr_elem2 = document.getElementById(array[i]);
+    tr_elem2.children[2].dataset.balance = "$" + y;
+    tr_elem2.children[2].textContent = "$" + y;
+    y_values.push(y); //putting random variables into array
+
+  }
+
+  tr_elem3 = document.getElementById(array[0]);
+  tr_elem.children[3].dataset.balance = manual_input[0]-y_values[0];
+  tr_elem3.children[3].textContent = "$" + String(manual_input[0]-y_values[0]);
+
+  tr_elem3 = document.getElementById(array[1]);
+  tr_elem.children[3].dataset.balance = (manual_input[1]-y_values[1]);
+  tr_elem3.children[3].textContent = "$" + String(manual_input[1]-y_values[1]);
+
+  tr_elem3 = document.getElementById(array[2]);
+  tr_elem.children[3].dataset.balance = y_values[2];
+  tr_elem3.children[3].textContent = "$" + String(manual_input[2]-y_values[2]);
+
+  tr_elem3 = document.getElementById(array[3]);
+  tr_elem.children[3].dataset.balance = y_values[3];
+  tr_elem3.children[3].textContent = "$" + String(manual_input[3]-y_values[3]);
+
+  tr_elem3 = document.getElementById(array[4]);
+  tr_elem.children[3].dataset.balance = y_values[4];
+  tr_elem3.children[3].textContent = "$" + String(manual_input[4]-y_values[4]);
+
+  tr_elem3 = document.getElementById(array[5]);
+  tr_elem.children[3].dataset.balance = y_values[5];
+  tr_elem3.children[3].textContent = "$" + String(manual_input[5]-y_values[5]);
+
+  tr_elem3 = document.getElementById(array[6]);
+  tr_elem.children[3].dataset.balance = y_values[6];
+  tr_elem3.children[3].textContent = "$" + String(manual_input[6]-y_values[6]);
+
+  tr_elem3 = document.getElementById(array[7]);
+  tr_elem.children[3].dataset.balance = y_values[7];
+  tr_elem3.children[3].textContent = "$" + String(manual_input[7]-y_values[7]);
+
+  tr_elem3 = document.getElementById(array[8]);
+  tr_elem.children[3].dataset.balance = y_values[8];
+  tr_elem3.children[3].textContent = "$" + String(manual_input[8]-y_values[8]);
+
+  tr_elem3 = document.getElementById(array[9]);
+  tr_elem.children[3].dataset.balance = y_values[9];
+  tr_elem3.children[3].textContent = "$" + String(manual_input[9]-y_values[9]);
+
+
   
 
+  </script>
 </body>
 </html>
 
