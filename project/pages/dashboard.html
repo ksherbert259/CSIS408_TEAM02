@@ -14,14 +14,10 @@
   // Update the pie chart showing monthly spending
   function UpdateChart()
   {
-    for(var i = 0; i < USER_DATA.length; i++){ // HMMMMM - Kody
-      // Haha I got it.
-      // Switch("PARSEINT(...)")
-      // then we are checking if it matches the "STRING"
+    for(var i = 0; i < USER_DATA.length; i++){
 
 
-      alert(parseInt(USER_DATA[i][1])); // this alerts the correct category name (8 and 6 for my test input)
-      switch (USER_DATA[i][1]) { // but then this doesn't read it as 8 or 6, it jumps to the default - alert of error
+      switch (USER_DATA[i][1]) {
         case "0":
           cat0 = parseInt(cat0) + parseInt(USER_DATA[i][3]);
           break;
